@@ -1,282 +1,357 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<title>Minha Rotina Semanal Dinâmica</title>
-<style>
-  body { font-family: sans-serif; }
-  table { border-collapse: collapse; width: 100%; }
-  th, td { border: 1px solid #cccccc; padding: 8px; text-align: center; vertical-align: middle; transition: background-color 0.3s; }
-  th { background-color: #f2f2f2; }
-  .study { background-color: #e0f7fa; }
-  .work { background-color: #fff9c4; }
-  .exercise { background-color: #dcedc8; }
-  .family { background-color: #ffe0b2; }
-  .leisure { background-color: #f3e5f5; }
-  .personal { background-color: #e0e0e0; }
 
-  /* NOVOS ESTILOS PARA O DESTAQUE */
-  .highlight-day {
-    background-color: #dbeafe !important; /* Azul claro para o dia */
-  }
-  .highlight-time {
-    background-color: #dcfce7 !important; /* Verde claro para a hora */
-  }
-  .highlight-intersect {
-    background-color: #93c5fd !important; /* Azul mais forte para a célula atual */
-    font-weight: bold;
-    color: black;
-  }
-</style>
+<head>
+  <meta charset="UTF-8">
+  <title>Minha Rotina Semanal Dinâmica</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      font-size: small;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      border: 1px solid #cccccc;
+      padding: 4px;
+      text-align: center;
+      vertical-align: middle;
+      transition: background-color 0.3s;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .study {
+      background-color: #e0f7fa;
+    }
+
+    .work {
+      background-color: #fff9c4;
+    }
+
+    .exercise {
+      background-color: #dcedc8;
+    }
+
+    .family {
+      background-color: #ffe0b2;
+    }
+
+    .leisure {
+      background-color: #f3e5f5;
+    }
+
+    .personal {
+      background-color: #e0e0e0;
+    }
+
+    /* NOVOS ESTILOS PARA O DESTAQUE */
+    .highlight-day {
+      background-color: #dbeafe !important;
+      /* Azul claro para o dia */
+    }
+
+    .highlight-time {
+      background-color: #dcfce7 !important;
+      /* Verde claro para a hora */
+    }
+
+    .highlight-intersect {
+      background-color: #93c5fd !important;
+      /* Azul mais forte para a célula atual */
+      font-weight: bold;
+      color: black;
+    }
+  </style>
 </head>
+
 <body>
 
-<h2>Planilha de Rotina com Destaque de Dia e Hora Atuais</h2>
-<p>Hoje é <strong><span id="current-day-text"></span></strong>. A rotina está destacando o dia e horário atuais.</p>
+  <h2>Planilha de Rotina com Destaque de Dia e Hora Atuais</h2>
+  <p>Hoje é <strong><span id="current-day-text"></span></strong>. A rotina está destacando o dia e horário atuais.</p>
 
-<table id="schedule-table">
-  <thead>
-    <tr>
-      <th>Horário</th>
-      <th>Segunda-feira</th>
-      <th>Terça-feira</th>
-      <th>Quarta-feira</th>
-      <th>Quinta-feira</th>
-      <th>Sexta-feira</th>
-      <th>Sábado</th>
-      <th>Domingo</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><b>05:30 - 06:00</b></td>
-      <td class="personal">💧 Despertar & Higiene</td>
-      <td class="personal">💧 Despertar & Higiene</td>
-      <td class="personal">💧 Despertar & Higiene</td>
-      <td class="personal">💧 Despertar & Higiene</td>
-      <td class="personal">💧 Despertar & Higiene</td>
-      <td class="personal">💧 Despertar & Higiene</td>
-      <td class="personal">💧 Despertar & Higiene</td>
-    </tr>
-    <tr>
-      <td><b>06:00 - 06:30</b></td>
-      <td rowspan="3" class="study">📚 <b>ESTUDO</b> (1.5h)</td>
-      <td rowspan="3" class="study">📚 <b>ESTUDO</b> (1.5h)</td>
-      <td rowspan="3" class="study">📚 <b>ESTUDO</b> (1.5h)</td>
-      <td rowspan="3" class="study">📚 <b>ESTUDO</b> (1.5h)</td>
-      <td rowspan="3" class="study">📚 <b>ESTUDO</b> (1.5h)</td>
-      <td rowspan="4" class="study">📚 <b>ESTUDO</b> (2h)</td>
-      <td rowspan="4" class="study">📚 <b>ESTUDO</b> (2h)</td>
-    </tr>
-    <tr>
-      <td><b>06:30 - 07:00</b></td>
-    </tr>
-    <tr>
-      <td><b>07:00 - 07:30</b></td>
-    </tr>
-    <tr>
-      <td><b>07:30 - 08:00</b></td>
-      <td class="family">👨‍👧 Rotina Manhã + 🚗 Deslocamento</td>
-      <td class="family">👨‍👧 Rotina Manhã (Café)</td>
-      <td class="family">👨‍👧 Rotina Manhã + 🚗 Deslocamento</td>
-      <td class="family">👨‍👧 Rotina Manhã (Café)</td>
-      <td class="family">👨‍👧 Rotina Manhã (Café)</td>
-    </tr>
-    <tr>
-      <td><b>08:00 - 08:30</b></td>
-      <td rowspan="7" class="work">💼 <b>TRABALHO</b></td>
-      <td rowspan="7" class="work">💼 <b>TRABALHO</b></td>
-      <td rowspan="7" class="work">💼 <b>TRABALHO</b></td>
-      <td rowspan="7" class="work">💼 <b>TRABALHO</b></td>
-      <td rowspan="7" class="work">💼 <b>TRABALHO</b></td>
-      <td rowspan="10" class="family">👨‍👩‍👧 Café da Manhã & Tempo Livre / Família</td>
-      <td rowspan="10" class="family">👨‍👩‍👧 Café da Manhã & Tempo Livre / Família</td>
-    </tr>
-    <tr><td><b>08:30 - 09:00</b></td></tr>
-    <tr><td><b>09:00 - 09:30</b></td></tr>
-    <tr><td><b>09:30 - 10:00</b></td></tr>
-    <tr><td><b>10:00 - 10:30</b></td></tr>
-    <tr><td><b>10:30 - 11:00</b></td></tr>
-    <tr><td><b>11:00 - 11:30</b></td></tr>
-    <tr>
-      <td><b>11:30 - 12:00</b></td>
-      <td rowspan="3" class="personal">🍛 Almoço / Pausa</td>
-      <td rowspan="2" class="exercise">💪 <b>EXERCÍCIO</b></td>
-      <td rowspan="3" class="personal">🍛 Almoço / Pausa</td>
-      <td rowspan="2" class="exercise">💪 <b>EXERCÍCIO</b></td>
-      <td rowspan="2" class="exercise">💪 <b>EXERCÍCIO</b></td>
-    </tr>
-    <tr>
-      <td><b>12:00 - 12:30</b></td>
-    </tr>
-    <tr>
-      <td><b>12:30 - 13:00</b></td>
-      <td class="exercise">🍛 Almoço Pós-Treino</td>
-      <td class="exercise">🍛 Almoço Pós-Treino</td>
-      <td class="exercise">🍛 Almoço Pós-Treino</td>
-    </tr>
-    <tr>
-      <td><b>13:00 - 13:30</b></td>
-      <td rowspan="9" class="work">💼 <b>TRABALHO</b></td>
-      <td rowspan="9" class="work">💼 <b>TRABALHO</b></td>
-      <td rowspan="9" class="work">💼 <b>TRABALHO</b></td>
-      <td rowspan="9" class="work">💼 <b>TRABALHO</b></td>
-      <td rowspan="9" class="work">💼 <b>TRABALHO</b></td>
-      <td rowspan="7" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
-      <td rowspan="7" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
-    </tr>
-    <tr><td><b>13:30 - 14:00</b></td></tr>
-    <tr><td><b>14:00 - 14:30</b></td></tr>
-    <tr>
-      <td><b>14:30 - 15:00</b></td>
-    </tr>
-    <tr><td><b>15:00 - 15:30</b></td></tr>
-    <tr><td><b>15:30 - 16:00</b></td></tr>
-    <tr><td><b>16:00 - 16:30</b></td></tr>
-    <tr>
-      <td><b>16:30 - 17:00</b></td>
-      <td rowspan="2" class="leisure">🎮 <b>LAZER (LoL)</b> / Livre</td>
-      <td rowspan="2" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
-    </tr>
-    <tr><td><b>17:00 - 17:30</b></td></tr>
-    <tr>
-      <td><b>17:30 - 18:00</b></td>
-      <td rowspan="2" class="personal">🚗 Deslocamento p/ Casa</td>
-      <td rowspan="2" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
-      <td rowspan="2" class="personal">🚗 Deslocamento p/ Casa</td>
-      <td rowspan="2" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
-      <td rowspan="2" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
-      <td rowspan="7" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
-      <td rowspan="7" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
-    </tr>
-    <tr><td><b>18:00 - 18:30</b></td></tr>
-    <tr>
-      <td><b>18:30 - 19:00</b></td>
-      <td rowspan="5" class="family">👨‍👩‍👧 Jantar / Família</td>
-      <td rowspan="5" class="family">👨‍👩‍👧 Jantar / Família</td>
-      <td rowspan="5" class="family">👨‍👩‍👧 Jantar / Família</td>
-      <td rowspan="5" class="family">👨‍👩‍👧 Jantar / Família</td>
-      <td rowspan="5" class="family">👨‍👩‍👧 Jantar / Família</td>
-    </tr>
-    <tr><td><b>19:00 - 19:30</b></td></tr>
-    <tr><td><b>19:30 - 20:00</b></td></tr>
-    <tr><td><b>20:00 - 20:30</b></td></tr>
-    <tr><td><b>20:30 - 21:00</b></td></tr>
-    <tr>
-      <td><b>21:00 - 21:30</b></td>
-      <td class="personal">✨ Organizar Cozinha</td>
-      <td class="personal">✨ Organizar Cozinha</td>
-      <td class="personal">✨ Organizar Cozinha</td>
-      <td class="personal">✨ Organizar Cozinha</td>
-      <td class="personal">✨ Organizar Cozinha</td>
-      <td class="personal">✨ Organizar Cozinha</td>
-      <td class="personal">✨ Organizar Cozinha</td>
-    </tr>
-    <tr>
-      <td><b>21:30 - 22:00</b></td>
-      <td rowspan="2" class="leisure">🎮 <b>LAZER (LoL)</b> / Esposa</td>
-      <td rowspan="2" class="family">🌙 Tempo Livre / Esposa</td>
-      <td rowspan="2" class="leisure">🎮 <b>LAZER (LoL)</b> / Esposa</td>
-      <td rowspan="2" class="family">🌙 Tempo Livre / Esposa</td>
-      <td rowspan="2" class="leisure">🎉 Sextou! Livre</td>
-      <td rowspan="2" class="leisure">🌙 Tempo Livre / Filme</td>
-      <td rowspan="2" class="family">🌙 Tempo Livre / Esposa</td>
-    </tr>
-    <tr><td><b>22:00 - 22:30</b></td></tr>
-    <tr>
-      <td><b>22:30 - 23:00</b></td>
-      <td class="personal">📖 Desacelerar / Leitura</td>
-      <td class="personal">📖 Desacelerar / Leitura</td>
-      <td class="personal">📖 Desacelerar / Leitura</td>
-      <td class="personal">📖 Desacelerar / Leitura</td>
-      <td class="personal">📖 Desacelerar / Leitura</td>
-      <td class="personal">📖 Desacelerar / Leitura</td>
-      <td class="personal">📖 Desacelerar / Leitura</td>
-    </tr>
-    <tr>
-      <td><b>23:00</b></td>
-      <td class="personal">😴 Dormir</td>
-      <td class="personal">😴 Dormir</td>
-      <td class="personal">😴 Dormir</td>
-      <td class="personal">😴 Dormir</td>
-      <td class="personal">😴 Dormir</td>
-      <td class="personal">😴 Dormir</td>
-      <td class="personal">😴 Dormir</td>
-    </tr>
-  </tbody>
-</table>
+  <table id="schedule-table">
+    <thead>
+      <tr>
+        <th>Horário</th>
+        <th>Segunda-feira</th>
+        <th>Terça-feira</th>
+        <th>Quarta-feira</th>
+        <th>Quinta-feira</th>
+        <th>Sexta-feira</th>
+        <th>Sábado</th>
+        <th>Domingo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>05:30 - 06:00</b></td>
+        <td class="personal">💧 Despertar & Higiene</td>
+        <td class="personal">💧 Despertar & Higiene</td>
+        <td class="personal">💧 Despertar & Higiene</td>
+        <td class="personal">💧 Despertar & Higiene</td>
+        <td class="personal">💧 Despertar & Higiene</td>
+        <td class="personal">💧 Despertar & Higiene</td>
+        <td class="personal">💧 Despertar & Higiene</td>
+      </tr>
+      <tr>
+        <td><b>06:00 - 06:30</b></td>
+        <td rowspan="3" class="study">📚 <b>ESTUDO</b> (1.5h)</td>
+        <td rowspan="3" class="study">📚 <b>ESTUDO</b> (1.5h)</td>
+        <td rowspan="3" class="study">📚 <b>ESTUDO</b> (1.5h)</td>
+        <td rowspan="3" class="study">📚 <b>ESTUDO</b> (1.5h)</td>
+        <td rowspan="3" class="study">📚 <b>ESTUDO</b> (1.5h)</td>
+        <td rowspan="4" class="study">📚 <b>ESTUDO</b> (2h)</td>
+        <td rowspan="4" class="study">📚 <b>ESTUDO</b> (2h)</td>
+      </tr>
+      <tr>
+        <td><b>06:30 - 07:00</b></td>
+      </tr>
+      <tr>
+        <td><b>07:00 - 07:30</b></td>
+      </tr>
+      <tr>
+        <td><b>07:30 - 08:00</b></td>
+        <td class="family">👨‍👧 Rotina Manhã + 🚗 Deslocamento</td>
+        <td class="family">👨‍👧 Rotina Manhã (Café)</td>
+        <td class="family">👨‍👧 Rotina Manhã + 🚗 Deslocamento</td>
+        <td class="family">👨‍👧 Rotina Manhã (Café)</td>
+        <td class="family">👨‍👧 Rotina Manhã (Café)</td>
+      </tr>
+      <tr>
+        <td><b>08:00 - 08:30</b></td>
+        <td rowspan="7" class="work">💼 <b>TRABALHO</b></td>
+        <td rowspan="7" class="work">💼 <b>TRABALHO</b></td>
+        <td rowspan="7" class="work">💼 <b>TRABALHO</b></td>
+        <td rowspan="7" class="work">💼 <b>TRABALHO</b></td>
+        <td rowspan="7" class="work">💼 <b>TRABALHO</b></td>
+        <td rowspan="10" class="family">👨‍👩‍👧 Café da Manhã & Tempo Livre / Família</td>
+        <td rowspan="10" class="family">👨‍👩‍👧 Café da Manhã & Tempo Livre / Família</td>
+      </tr>
+      <tr>
+        <td><b>08:30 - 09:00</b></td>
+      </tr>
+      <tr>
+        <td><b>09:00 - 09:30</b></td>
+      </tr>
+      <tr>
+        <td><b>09:30 - 10:00</b></td>
+      </tr>
+      <tr>
+        <td><b>10:00 - 10:30</b></td>
+      </tr>
+      <tr>
+        <td><b>10:30 - 11:00</b></td>
+      </tr>
+      <tr>
+        <td><b>11:00 - 11:30</b></td>
+      </tr>
+      <tr>
+        <td><b>11:30 - 12:00</b></td>
+        <td rowspan="3" class="personal">🍛 Almoço / Pausa</td>
+        <td rowspan="2" class="exercise">💪 <b>EXERCÍCIO</b></td>
+        <td rowspan="3" class="personal">🍛 Almoço / Pausa</td>
+        <td rowspan="2" class="exercise">💪 <b>EXERCÍCIO</b></td>
+        <td rowspan="2" class="exercise">💪 <b>EXERCÍCIO</b></td>
+      </tr>
+      <tr>
+        <td><b>12:00 - 12:30</b></td>
+      </tr>
+      <tr>
+        <td><b>12:30 - 13:00</b></td>
+        <td class="exercise">🍛 Almoço Pós-Treino</td>
+        <td class="exercise">🍛 Almoço Pós-Treino</td>
+        <td class="exercise">🍛 Almoço Pós-Treino</td>
+      </tr>
+      <tr>
+        <td><b>13:00 - 13:30</b></td>
+        <td rowspan="9" class="work">💼 <b>TRABALHO</b></td>
+        <td rowspan="9" class="work">💼 <b>TRABALHO</b></td>
+        <td rowspan="9" class="work">💼 <b>TRABALHO</b></td>
+        <td rowspan="9" class="work">💼 <b>TRABALHO</b></td>
+        <td rowspan="9" class="work">💼 <b>TRABALHO</b></td>
+        <td rowspan="7" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
+        <td rowspan="7" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
+      </tr>
+      <tr>
+        <td><b>13:30 - 14:00</b></td>
+      </tr>
+      <tr>
+        <td><b>14:00 - 14:30</b></td>
+      </tr>
+      <tr>
+        <td><b>14:30 - 15:00</b></td>
+      </tr>
+      <tr>
+        <td><b>15:00 - 15:30</b></td>
+      </tr>
+      <tr>
+        <td><b>15:30 - 16:00</b></td>
+      </tr>
+      <tr>
+        <td><b>16:00 - 16:30</b></td>
+      </tr>
+      <tr>
+        <td><b>16:30 - 17:00</b></td>
+        <td rowspan="2" class="leisure">🎮 <b>LAZER (LoL)</b> / Livre</td>
+        <td rowspan="2" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
+      </tr>
+      <tr>
+        <td><b>17:00 - 17:30</b></td>
+      </tr>
+      <tr>
+        <td><b>17:30 - 18:00</b></td>
+        <td rowspan="2" class="personal">🚗 Deslocamento p/ Casa</td>
+        <td rowspan="2" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
+        <td rowspan="2" class="personal">🚗 Deslocamento p/ Casa</td>
+        <td rowspan="2" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
+        <td rowspan="2" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
+        <td rowspan="7" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
+        <td rowspan="7" class="family">👨‍👩‍👧 Tempo Livre / Família</td>
+      </tr>
+      <tr>
+        <td><b>18:00 - 18:30</b></td>
+      </tr>
+      <tr>
+        <td><b>18:30 - 19:00</b></td>
+        <td rowspan="5" class="family">👨‍👩‍👧 Jantar / Família</td>
+        <td rowspan="5" class="family">👨‍👩‍👧 Jantar / Família</td>
+        <td rowspan="5" class="family">👨‍👩‍👧 Jantar / Família</td>
+        <td rowspan="5" class="family">👨‍👩‍👧 Jantar / Família</td>
+        <td rowspan="5" class="family">👨‍👩‍👧 Jantar / Família</td>
+      </tr>
+      <tr>
+        <td><b>19:00 - 19:30</b></td>
+      </tr>
+      <tr>
+        <td><b>19:30 - 20:00</b></td>
+      </tr>
+      <tr>
+        <td><b>20:00 - 20:30</b></td>
+      </tr>
+      <tr>
+        <td><b>20:30 - 21:00</b></td>
+      </tr>
+      <tr>
+        <td><b>21:00 - 21:30</b></td>
+        <td class="personal">✨ Organizar Cozinha</td>
+        <td class="personal">✨ Organizar Cozinha</td>
+        <td class="personal">✨ Organizar Cozinha</td>
+        <td class="personal">✨ Organizar Cozinha</td>
+        <td class="personal">✨ Organizar Cozinha</td>
+        <td class="personal">✨ Organizar Cozinha</td>
+        <td class="personal">✨ Organizar Cozinha</td>
+      </tr>
+      <tr>
+        <td><b>21:30 - 22:00</b></td>
+        <td rowspan="2" class="leisure">🎮 <b>LAZER (LoL)</b> / Esposa</td>
+        <td rowspan="2" class="family">🌙 Tempo Livre / Esposa</td>
+        <td rowspan="2" class="leisure">🎮 <b>LAZER (LoL)</b> / Esposa</td>
+        <td rowspan="2" class="family">🌙 Tempo Livre / Esposa</td>
+        <td rowspan="2" class="leisure">🎉 Sextou! Livre</td>
+        <td rowspan="2" class="leisure">🌙 Tempo Livre / Filme</td>
+        <td rowspan="2" class="family">🌙 Tempo Livre / Esposa</td>
+      </tr>
+      <tr>
+        <td><b>22:00 - 22:30</b></td>
+      </tr>
+      <tr>
+        <td><b>22:30 - 23:00</b></td>
+        <td class="personal">📖 Desacelerar / Leitura</td>
+        <td class="personal">📖 Desacelerar / Leitura</td>
+        <td class="personal">📖 Desacelerar / Leitura</td>
+        <td class="personal">📖 Desacelerar / Leitura</td>
+        <td class="personal">📖 Desacelerar / Leitura</td>
+        <td class="personal">📖 Desacelerar / Leitura</td>
+        <td class="personal">📖 Desacelerar / Leitura</td>
+      </tr>
+      <tr>
+        <td><b>23:00</b></td>
+        <td class="personal">😴 Dormir</td>
+        <td class="personal">😴 Dormir</td>
+        <td class="personal">😴 Dormir</td>
+        <td class="personal">😴 Dormir</td>
+        <td class="personal">😴 Dormir</td>
+        <td class="personal">😴 Dormir</td>
+        <td class="personal">😴 Dormir</td>
+      </tr>
+    </tbody>
+  </table>
 
-<script>
-  // Esta função será executada assim que a página for carregada
-  window.onload = function() {
-    // Pega a data e hora atuais
-    const now = new Date();
-    const currentDay = now.getDay(); // 0=Domingo, 1=Segunda, ..., 6=Sábado
-    const currentHours = now.getHours();
-    const currentMinutes = now.getMinutes();
+  <script>
+    // Esta função será executada assim que a página for carregada
+    window.onload = function () {
+      // Pega a data e hora atuais
+      const now = new Date();
+      const currentDay = now.getDay(); // 0=Domingo, 1=Segunda, ..., 6=Sábado
+      const currentHours = now.getHours();
+      const currentMinutes = now.getMinutes();
 
-    // Mapeia o dia da semana (retornado pelo JS) para o índice da coluna da nossa tabela
-    // Colunas: 0=Horário, 1=Segunda, 2=Terça, ..., 7=Domingo
-    const dayToColumnIndex = [7, 1, 2, 3, 4, 5, 6];
-    const highlightColumnIndex = dayToColumnIndex[currentDay];
+      // Mapeia o dia da semana (retornado pelo JS) para o índice da coluna da nossa tabela
+      // Colunas: 0=Horário, 1=Segunda, 2=Terça, ..., 7=Domingo
+      const dayToColumnIndex = [7, 1, 2, 3, 4, 5, 6];
+      const highlightColumnIndex = dayToColumnIndex[currentDay];
+      console.log(currentDay);
+      console.log(highlightColumnIndex);
+      // Pega a tabela e todas as suas linhas do corpo
+      const table = document.getElementById('schedule-table');
+      const tableBodyRows = table.tBodies[0].rows;
 
-    // Pega a tabela e todas as suas linhas do corpo
-    const table = document.getElementById('schedule-table');
-    const tableBodyRows = table.tBodies[0].rows;
 
-    // // --- 1. Destaca a Coluna do Dia Atual ---
-    // if (highlightColumnIndex > 0) { // Garante que não vai tentar destacar a coluna de horário
-    //   for (let i = 0; i < tableBodyRows.length; i++) {
-    //     // Cuidado com as células mescladas (rowspan)
-    //     // Esta é uma forma simples de contornar, pode não pegar todas as células mescladas, mas funciona visualmente
-    //     let cellToHighlight = tableBodyRows[i].querySelector(`td:nth-of-type(${highlightColumnIndex})`);
-    //     if(cellToHighlight) {
-    //         cellToHighlight.classList.add('highlight-day');
-    //     }
-    //   }
-    //   // Destaca também o cabeçalho da coluna
-    //   table.tHead.rows[0].cells[highlightColumnIndex].classList.add('highlight-day');
-    // }
+      // --- 1. Destaca a Coluna e Aumenta a Fonte do Dia Atual ---
+      // if (highlightColumnIndex > 0) {
+      //   // Loop que passa por CADA linha da tabela (incluindo o cabeçalho)
+      //   for (let i = 0; i < table.rows.length; i++) {
+      //     // Pega a célula específica na linha atual e na coluna do dia de hoje
+      //     let cell = table.rows[i].cells[highlightColumnIndex];
 
-    // --- 2. Encontra e Destaca a Linha da Hora Atual ---
-    let highlightRowIndex = -1;
-    for (let i = 0; i < tableBodyRows.length; i++) {
-      const timeCell = tableBodyRows[i].cells[0];
-      const timeText = timeCell.innerText;
-      // Pega a hora de início da linha (ex: "09:00")
-      const timeMatch = timeText.match(/(\d{2}):(\d{2})/);
+      //     // Verifica se a célula realmente existe antes de tentar modificá-la
+      //     if (cell) {
+      //       // Aumenta o tamanho da fonte da célula
+      //       cell.style.fontSize = '1.3em'; // Você pode ajustar o valor, ex: '110%' ou '16px'
+      //       cell.style.fontWeight = 'bold'; // Deixa o texto em negrito também
+      //     }
+      //   }
+      // }
 
-      if (timeMatch) {
-        const rowHours = parseInt(timeMatch[1]);
-        const rowMinutes = parseInt(timeMatch[2]);
+      // --- 2. Encontra e Destaca a Linha da Hora Atual ---
+      let highlightRowIndex = -1;
+      for (let i = 0; i < tableBodyRows.length; i++) {
+        const timeCell = tableBodyRows[i].cells[0];
+        const timeText = timeCell.innerText;
+        // Pega a hora de início da linha (ex: "09:00")
+        const timeMatch = timeText.match(/(\d{2}):(\d{2})/);
 
-        // Compara se a hora atual é maior ou igual à hora da linha.
-        // A última linha que satisfizer isso é a linha atual.
-        if (currentHours > rowHours || (currentHours === rowHours && currentMinutes >= rowMinutes)) {
-          highlightRowIndex = i;
+        if (timeMatch) {
+          const rowHours = parseInt(timeMatch[1]);
+          const rowMinutes = parseInt(timeMatch[2]);
+
+          // Compara se a hora atual é maior ou igual à hora da linha.
+          // A última linha que satisfizer isso é a linha atual.
+          if (currentHours > rowHours || (currentHours === rowHours && currentMinutes >= rowMinutes)) {
+            highlightRowIndex = i;
+          }
         }
       }
-    }
 
-    // Aplica o destaque na linha encontrada
-    if (highlightRowIndex !== -1) {
-      tableBodyRows[highlightRowIndex].classList.add('highlight-time');
-    }
+      // Aplica o destaque na linha encontrada
+      if (highlightRowIndex !== -1) {
+        tableBodyRows[highlightRowIndex].classList.add('highlight-time');
+      }
 
-    // // --- 3. Destaca a Célula de Interseção ---
-    // if (highlightRowIndex !== -1 && highlightColumnIndex > 0) {
-    //   // Re-seleciona a célula específica para garantir que a classe de interseção seja aplicada
-    //    let cellToHighlight = tableBodyRows[highlightRowIndex].querySelector(`td:nth-of-type(${highlightColumnIndex})`);
-    //     if(cellToHighlight) {
-    //         cellToHighlight.classList.add('highlight-intersect');
-    //     }
-    // }
-
-    // --- 4. Mostra o dia da semana no texto ---
-    const dayNames = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
-    document.getElementById('current-day-text').textContent = dayNames[currentDay];
-  };
-</script>
+      // --- 4. Mostra o dia da semana no texto ---
+      const dayNames = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+      document.getElementById('current-day-text').textContent = dayNames[currentDay];
+    };
+  </script>
 
 </body>
+
 </html>
