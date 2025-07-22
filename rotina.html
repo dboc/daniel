@@ -2,12 +2,65 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Minha Rotina Semanal Dinâmica</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minha Rotina Semanal Dinâmica e Responsiva</title>
 <style>
-  body { font-family: sans-serif; }
-  table { border-collapse: collapse; width: 100%; }
-  th, td { border: 1px solid #cccccc; padding: 8px; text-align: center; vertical-align: middle; transition: background-color 0.3s; }
-  th { background-color: #f2f2f2; }
+  html, body {
+    height: 100%; /* Garante que o corpo ocupe toda a altura */
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f0f2f5;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o container */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .container {
+    width: 100%;
+    max-width: 1600px; /* Limite máximo para telas grandes */
+    flex-grow: 1; /* Faz o container crescer para ocupar o espaço */
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden; /* Esconde o excesso */
+  }
+  .header-info {
+      padding: 15px 20px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+  }
+  .table-wrapper {
+      overflow: auto; /* Permite rolagem vertical e horizontal na tabela */
+      flex-grow: 1;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    /* O tamanho da fonte agora se ajusta à tela */
+    font-size: 1.5vmin;
+  }
+  th, td {
+    border: 1px solid #e0e0e0;
+    padding: 0.8em;
+    text-align: center;
+    vertical-align: middle;
+    transition: background-color 0.3s;
+  }
+  th {
+    background-color: #f8f9fa;
+    position: sticky;
+    top: 0; /* Faz o cabeçalho fixar ao rolar */
+    z-index: 10;
+  }
+  td[rowspan] {
+      vertical-align: middle;
+  }
   .study { background-color: #e0f7fa; }
   .work { background-color: #fff9c4; }
   .exercise { background-color: #dcedc8; }
@@ -15,15 +68,10 @@
   .leisure { background-color: #f3e5f5; }
   .personal { background-color: #e0e0e0; }
 
-  /* NOVOS ESTILOS PARA O DESTAQUE */
-  .highlight-day {
-    background-color: #dbeafe !important; /* Azul claro para o dia */
-  }
-  .highlight-time {
-    background-color: #dcfce7 !important; /* Verde claro para a hora */
-  }
+  .highlight-day { background-color: #dbeafe !important; }
+  .highlight-time { background-color: #dcfce7 !important; }
   .highlight-intersect {
-    background-color: #93c5fd !important; /* Azul mais forte para a célula atual */
+    background-color: #93c5fd !important;
     font-weight: bold;
     color: black;
   }
@@ -31,23 +79,26 @@
 </head>
 <body>
 
-<h2>Planilha de Rotina com Destaque de Dia e Hora Atuais</h2>
-<p>Hoje é <strong><span id="current-day-text"></span></strong>. A rotina está destacando o dia e horário atuais.</p>
-
-<table id="schedule-table">
-  <thead>
-    <tr>
-      <th>Horário</th>
-      <th>Segunda-feira</th>
-      <th>Terça-feira</th>
-      <th>Quarta-feira</th>
-      <th>Quinta-feira</th>
-      <th>Sexta-feira</th>
-      <th>Sábado</th>
-      <th>Domingo</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="container">
+  <div class="header-info">
+    <h2>Planilha de Rotina Dinâmica</h2>
+    <p>Hoje é <strong><span id="current-day-text"></span></strong>. A rotina está destacando o dia e horário atuais.</p>
+  </div>
+  <div class="table-wrapper">
+    <table id="schedule-table">
+      <thead>
+        <tr>
+          <th>Horário</th>
+          <th>Segunda-feira</th>
+          <th>Terça-feira</th>
+          <th>Quarta-feira</th>
+          <th>Quinta-feira</th>
+          <th>Sexta-feira</th>
+          <th>Sábado</th>
+          <th>Domingo</th>
+        </tr>
+      </thead>
+      <tbody>
     <tr>
       <td><b>05:30 - 06:00</b></td>
       <td class="personal">💧 Despertar & Higiene</td>
@@ -203,78 +254,92 @@
       <td class="personal">😴 Dormir</td>
       <td class="personal">😴 Dormir</td>
     </tr>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+    </div>
+</div>
 
 <script>
-  // Esta função será executada assim que a página for carregada
-  window.onload = function() {
-    // Pega a data e hora atuais
+  function highlightCurrentTime() {
     const now = new Date();
-    const currentDay = now.getDay(); // 0=Domingo, 1=Segunda, ..., 6=Sábado
+    const currentDay = now.getDay(); // 0=Domingo, 1=Segunda, ...
     const currentHours = now.getHours();
     const currentMinutes = now.getMinutes();
 
-    // Mapeia o dia da semana (retornado pelo JS) para o índice da coluna da nossa tabela
-    // Colunas: 0=Horário, 1=Segunda, 2=Terça, ..., 7=Domingo
-    const dayToColumnIndex = [7, 1, 2, 3, 4, 5, 6];
+    const dayToColumnIndex = [8, 2, 3, 4, 5, 6, 7]; // Ajustado para querySelector: 1=Horário, 2=Seg, ...
     const highlightColumnIndex = dayToColumnIndex[currentDay];
 
-    // Pega a tabela e todas as suas linhas do corpo
     const table = document.getElementById('schedule-table');
+    const tableHeaderCells = table.tHead.rows[0].cells;
     const tableBodyRows = table.tBodies[0].rows;
+    
+    // Limpa destaques antigos
+    document.querySelectorAll('.highlight-day, .highlight-time, .highlight-intersect').forEach(el => {
+        el.classList.remove('highlight-day', 'highlight-time', 'highlight-intersect');
+    });
 
-    // // --- 1. Destaca a Coluna do Dia Atual ---
-    // if (highlightColumnIndex > 0) { // Garante que não vai tentar destacar a coluna de horário
-    //   for (let i = 0; i < tableBodyRows.length; i++) {
-    //     // Cuidado com as células mescladas (rowspan)
-    //     // Esta é uma forma simples de contornar, pode não pegar todas as células mescladas, mas funciona visualmente
-    //     let cellToHighlight = tableBodyRows[i].querySelector(`td:nth-of-type(${highlightColumnIndex})`);
-    //     if(cellToHighlight) {
-    //         cellToHighlight.classList.add('highlight-day');
-    //     }
-    //   }
-    //   // Destaca também o cabeçalho da coluna
-    //   table.tHead.rows[0].cells[highlightColumnIndex].classList.add('highlight-day');
-    // }
-
-    // --- 2. Encontra e Destaca a Linha da Hora Atual ---
-    let highlightRowIndex = -1;
-    for (let i = 0; i < tableBodyRows.length; i++) {
-      const timeCell = tableBodyRows[i].cells[0];
-      const timeText = timeCell.innerText;
-      // Pega a hora de início da linha (ex: "09:00")
-      const timeMatch = timeText.match(/(\d{2}):(\d{2})/);
-
-      if (timeMatch) {
-        const rowHours = parseInt(timeMatch[1]);
-        const rowMinutes = parseInt(timeMatch[2]);
-
-        // Compara se a hora atual é maior ou igual à hora da linha.
-        // A última linha que satisfizer isso é a linha atual.
-        if (currentHours > rowHours || (currentHours === rowHours && currentMinutes >= rowMinutes)) {
-          highlightRowIndex = i;
+    // 1. Destaca a Coluna do Dia
+    if (highlightColumnIndex > 1) {
+        tableHeaderCells[highlightColumnIndex - 1].classList.add('highlight-day');
+        for (const row of tableBodyRows) {
+            // Encontra a célula visível correta, considerando rowspans
+            let cellIndex = highlightColumnIndex - 1;
+            let currentCell = null;
+            for(let i = 0; i < row.cells.length; i++){
+                if(row.cells[i].cellIndex >= cellIndex){
+                    currentCell = row.cells[i];
+                    break;
+                }
+            }
+            if(currentCell && currentCell.cellIndex === cellIndex){
+                 currentCell.classList.add('highlight-day');
+            }
         }
-      }
     }
 
-    // Aplica o destaque na linha encontrada
-    if (highlightRowIndex !== -1) {
-      tableBodyRows[highlightRowIndex].classList.add('highlight-time');
+    // 2. Destaca a Linha da Hora
+    let highlightRow = null;
+    for (let i = 0; i < tableBodyRows.length; i++) {
+        const timeText = tableBodyRows[i].cells[0].innerText;
+        const timeMatch = timeText.match(/(\d{2}):(\d{2})/);
+        if (timeMatch) {
+            const rowHours = parseInt(timeMatch[1]);
+            const rowMinutes = parseInt(timeMatch[2]);
+            if (currentHours > rowHours || (currentHours === rowHours && currentMinutes >= rowMinutes)) {
+                highlightRow = tableBodyRows[i];
+            } else {
+                break; 
+            }
+        }
+    }
+    if (highlightRow) {
+        highlightRow.classList.add('highlight-time');
     }
 
-    // // --- 3. Destaca a Célula de Interseção ---
-    // if (highlightRowIndex !== -1 && highlightColumnIndex > 0) {
-    //   // Re-seleciona a célula específica para garantir que a classe de interseção seja aplicada
-    //    let cellToHighlight = tableBodyRows[highlightRowIndex].querySelector(`td:nth-of-type(${highlightColumnIndex})`);
-    //     if(cellToHighlight) {
-    //         cellToHighlight.classList.add('highlight-intersect');
-    //     }
-    // }
-
-    // --- 4. Mostra o dia da semana no texto ---
+    // 3. Destaca a Célula de Interseção
+    if (highlightRow && highlightColumnIndex > 1) {
+        let cellIndex = highlightColumnIndex - 1;
+        let intersectCell = null;
+        for(let i = 0; i < highlightRow.cells.length; i++){
+             if(highlightRow.cells[i].cellIndex >= cellIndex){
+                intersectCell = highlightRow.cells[i];
+                break;
+            }
+        }
+        if(intersectCell && intersectCell.cellIndex === cellIndex){
+            intersectCell.classList.add('highlight-intersect');
+        }
+    }
+    
+    // 4. Atualiza o texto do dia
     const dayNames = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
     document.getElementById('current-day-text').textContent = dayNames[currentDay];
+  }
+
+  window.onload = function() {
+    highlightCurrentTime();
+    // Atualiza a cada 30 segundos
+    setInterval(highlightCurrentTime, 30000); 
   };
 </script>
 
