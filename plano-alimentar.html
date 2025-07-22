@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planilha Semanal de Alimentação</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 1400px;
+    margin: auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow-x: auto; /* Adiciona rolagem horizontal em telas pequenas */
+  }
+  h1 {
+    color: #004a99;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    border: 1px solid #dee2e6;
+    padding: 15px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background-color: #0056b3;
+    color: white;
+    font-weight: bold;
+  }
+  .meal-time {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    width: 12%;
+  }
+  ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 0.9em;
+  }
+  li {
+    margin-bottom: 6px;
+  }
+  .training-day {
+    background-color: #e8f5e9; /* Verde claro para dias de treino */
+  }
+  .weekend {
+    background-color: #fff9e6; /* Amarelo claro para fim de semana */
+  }
+  caption {
+    caption-side: bottom;
+    text-align: left;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+  }
+  strong.protein { color: #c82333; }
+  strong.carb { color: #e0a800; }
+  strong.fat { color: #5a6268; }
+  strong.highlight { color: #0056b3; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Plano Alimentar Semanal</h1>
+  <table>
+    <thead>
+      <tr>
+        <th class="meal-time">Refeição</th>
+        <th>Segunda-feira</th>
+        <th>Terça-feira (Treino)</th>
+        <th>Quarta-feira</th>
+        <th>Quinta-feira (Treino)</th>
+        <th>Sexta-feira (Treino)</th>
+        <th>Sábado (Flexível)</th>
+        <th>Domingo (Flexível)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="meal-time">05:30<br>Despertar</td>
+        <td colspan="7" style="text-align:center;">💧 1 Copo grande de água (300-400ml) para iniciar a hidratação do dia.</td>
+      </tr>
+      <tr>
+        <td class="meal-time">07:30<br>Café da Manhã</td>
+        <td><ul><li><strong class="protein">Proteína:</strong> 2-3 ovos ou queijo</li><li><strong class="carb">Carboidrato:</strong> Cuscuz, pão int. ou batata doce</li><li><strong>Fruta:</strong> 1 porção</li></ul></td>
+        <td class="training-day"><ul><li><strong class="protein">Proteína:</strong> 2-3 ovos ou queijo</li><li><strong class="carb">Carboidrato:</strong> Cuscuz, pão int. ou batata doce</li><li><strong>Fruta:</strong> 1 porção</li></ul></td>
+        <td><ul><li><strong class="protein">Proteína:</strong> 2-3 ovos ou queijo</li><li><strong class="carb">Carboidrato:</strong> Cuscuz, pão int. ou batata doce</li><li><strong>Fruta:</strong> 1 porção</li></ul></td>
+        <td class="training-day"><ul><li><strong class="protein">Proteína:</strong> 2-3 ovos ou queijo</li><li><strong class="carb">Carboidrato:</strong> Cuscuz, pão int. ou batata doce</li><li><strong>Fruta:</strong> 1 porção</li></ul></td>
+        <td class="training-day"><ul><li><strong class="protein">Proteína:</strong> 2-3 ovos ou queijo</li><li><strong class="carb">Carboidrato:</strong> Cuscuz, pão int. ou batata doce</li><li><strong>Fruta:</strong> 1 porção</li></ul></td>
+        <td class="weekend" colspan="2"><ul><li>Aproveite o café em família!</li><li><strong class="highlight">Sugestão:</strong> Monte um prato completo com cuscuz, ovos e frutas variadas.</li></ul></td>
+      </tr>
+      <tr>
+        <td class="meal-time">10:30<br>Lanche da Manhã</td>
+        <td><ul><li><strong class="highlight">Opção 1:</strong> Whey + fruta</li><li><strong class="highlight">Opção 2:</strong> Iogurte + aveia</li></ul></td>
+        <td class="training-day"><strong>PRÉ-TREINO</strong><ul><li><strong class="protein">Proteína:</strong> 1 dose de whey</li><li><strong class="carb">Carboidrato:</strong> Banana com mel/aveia ou pão com geleia</li></ul></td>
+        <td><ul><li><strong class="highlight">Opção 1:</strong> Whey + fruta</li><li><strong class="highlight">Opção 2:</strong> Iogurte + aveia</li></ul></td>
+        <td class="training-day"><strong>PRÉ-TREINO</strong><ul><li><strong class="protein">Proteína:</strong> 1 dose de whey</li><li><strong class="carb">Carboidrato:</strong> Banana com mel/aveia ou pão com geleia</li></ul></td>
+        <td class="training-day"><strong>PRÉ-TREINO</strong><ul><li><strong class="protein">Proteína:</strong> 1 dose de whey</li><li><strong class="carb">Carboidrato:</strong> Banana com mel/aveia ou pão com geleia</li></ul></td>
+        <td class="weekend" colspan="2" rowspan="2"><ul><li>Se sentir fome entre as refeições, opte por frutas, iogurte ou um punhado de castanhas.</li></ul></td>
+      </tr>
+      <tr>
+        <td class="meal-time">12:00-12:45<br>Almoço</td>
+        <td><ul><li><strong class="protein">Proteína:</strong> 120-150g (frango, peixe, carne)</li><li><strong class="carb">Carboidrato:</strong> Arroz, batata, aipim</li><li><strong>Leguminosa:</strong> Feijão</li><li><strong>Salada:</strong> À vontade + azeite</li></ul></td>
+        <td class="training-day"><strong>PÓS-TREINO</strong><ul><li><strong class="protein">Proteína (Reforçada):</strong> 150g</li><li><strong class="carb">Carboidrato (Rápido):</strong> Arroz branco ou batata inglesa</li><li><strong>Leguminosa:</strong> Feijão</li><li><strong>Salada:</strong> Essencial</li></ul></td>
+        <td><ul><li><strong class="protein">Proteína:</strong> 120-150g (frango, peixe, carne)</li><li><strong class="carb">Carboidrato:</strong> Arroz, batata, aipim</li><li><strong>Leguminosa:</strong> Feijão</li><li><strong>Salada:</strong> À vontade + azeite</li></ul></td>
+        <td class="training-day"><strong>PÓS-TREINO</strong><ul><li><strong class="protein">Proteína (Reforçada):</strong> 150g</li><li><strong class="carb">Carboidrato (Rápido):</strong> Arroz branco ou batata inglesa</li><li><strong>Leguminosa:</strong> Feijão</li><li><strong>Salada:</strong> Essencial</li></ul></td>
+        <td class="training-day"><strong>PÓS-TREINO</strong><ul><li><strong class="protein">Proteína (Reforçada):</strong> 150g</li><li><strong class="carb">Carboidrato (Rápido):</strong> Arroz branco ou batata inglesa</li><li><strong>Leguminosa:</strong> Feijão</li><li><strong>Salada:</strong> Essencial</li></ul></td>
+      </tr>
+       <tr>
+        <td class="meal-time">16:00-16:30<br>Lanche da Tarde</td>
+        <td colspan="5"><ul><li><strong class="protein">Proteína:</strong> 2 ovos cozidos ou atum/sardinha.</li><li><strong class="fat">Complemento:</strong> 1 fruta ou punhado de castanhas.</li></ul></td>
+        <td class="weekend" colspan="2"><ul><li>Mantenha a estrutura: uma fonte de proteína e uma fruta ou gordura boa para manter a energia.</li></ul></td>
+      </tr>
+      <tr>
+        <td class="meal-time">19:00<br>Jantar</td>
+        <td colspan="5"><ul><li><strong class="protein">Proteína (Foco):</strong> 120-150g (frango, peixe, carne) ou omelete</li><li><strong>Principal:</strong> Legumes e verduras à vontade</li><li><strong class="carb">Carboidrato (Moderado):</strong> Opcional (ex: cuscuz, batata doce)</li></ul></td>
+        <td class="weekend" colspan="2"><ul><li>Siga a estrutura base: Proteína + vegetais.</li><li>Permita-se uma refeição livre com moderação e aproveite o momento em família.</li></ul></td>
+      </tr>
+       <tr>
+        <td class="meal-time">22:00<br>Ceia</td>
+        <td colspan="7" style="text-align:center;">Opcional, se sentir fome: 1 pote de iogurte natural, 1 copo de leite ou um pouco de caseína/whey.</td>
+      </tr>
+    </tbody>
+    <caption>
+      <strong>Lembretes Importantes:</strong><br>
+      <strong>Hidratação:</strong> Meta de 2.5 a 3.5 litros de água por dia. Leve uma garrafa para o trabalho e mantenha uma perto em casa.<br>
+      <strong>Flexibilidade:</strong> Varie os alimentos dentro dos grupos sugeridos para não enjoar e obter diferentes nutrientes.<br>
+      <strong>Atenção:</strong> Este é um plano de sugestões. Para um acompanhamento individualizado e preciso, o ideal é consultar um nutricionista.
+    </caption>
+  </table>
+</div>
+
+</body>
+</html>
