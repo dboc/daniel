@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Use the Inter font family */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <!-- Main container -->
+    <div class="min-h-screen flex flex-col items-center justify-center p-4">
+        
+        <!-- Card container for the links -->
+        <div class="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+            
+            <!-- Header section -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Página de Navegação</h1>
+                <p class="text-gray-500 dark:text-gray-400 mt-2">Selecione uma das opções abaixo para continuar.</p>
+            </div>
+
+            <!-- Links list -->
+            <div class="space-y-4">
+                
+                <!-- Link to Workout Routine -->
+                <a href="rotina-treino.html" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                    Rotina de Treino
+                </a>
+
+                <!-- Link to Meal Plan -->
+                <a href="plano-alimentar.html" class="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                    Plano Alimentar
+                </a>
+
+                <!-- Link to General Routine -->
+                <a href="rotina.html" class="block w-full text-center bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50">
+                    Rotina Geral
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-8 text-center text-gray-500 dark:text-gray-400 text-sm">
+            <p>&copy; 2024 Meu App. Todos os direitos reservados.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
